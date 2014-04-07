@@ -72,6 +72,6 @@ class sfWidgetFormDoctrineJQueryAutocompleter extends sfWidgetFormJQueryAutocomp
       throw new RuntimeException(sprintf('Class "%s" must implement a "%s" method to be rendered in a "%s" widget', $this->getOption('model'), $method, __CLASS__));
     }
 
-    return !is_null($object) ? $object->$method() : '';
+    return is_object($object) ? $object->$method() : '';
   }
 }
