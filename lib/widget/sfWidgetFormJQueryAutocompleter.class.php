@@ -78,6 +78,15 @@ class sfWidgetFormJQueryAutocompleter extends sfWidgetFormInput
         for (key in data) {
           parsed[parsed.length] = { data: [ data[key], key ], value: data[key], result: data[key] };
         }
+        parsed.sort(function(a, b){
+          // sort parsed data by value
+         var nameA=a.value.toLowerCase(), nameB=b.value.toLowerCase()
+         if (nameA < nameB) //sort string ascending
+          return -1 
+         if (nameA > nameB)
+          return 1
+         return 0 //default return value (no sorting)
+        })
         return parsed;
       }
     }, %s))
